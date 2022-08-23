@@ -60,7 +60,7 @@ app.UsePiranha(options =>
     // Initialize Piranha
     App.Init(options.Api);
 
-    App.Modules.Manager().Scripts.Add("https://unpkg.com/vue-query-builder@0.7.1/dist/VueQueryBuilder.umd.min.js");
+    App.Modules.Manager().Scripts.Add("https://unpkg.com/vue-query-builder@0.8.2/dist/VueQueryBuilder.umd.min.js");
     App.Modules.Manager().Styles.Add("https://unpkg.com/vue-query-builder@0.8.2/dist/VueQueryBuilder.css");
     App.Modules.Manager().Scripts.Add("~/assets/js/query-builder-field.js");
 

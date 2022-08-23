@@ -1,4 +1,6 @@
-﻿using Piranha.Extend;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Piranha.Extend;
 
 namespace vuequery.Models
 {
@@ -7,6 +9,8 @@ namespace vuequery.Models
     {
         public IList<QueryBuilderRule> Rules { get; set; }
 
+        public JObject Query { get; set; } = new JObject();
+
         public string GetTitle()
         {
             return "My Custom Query Builder Field";
@@ -14,6 +18,9 @@ namespace vuequery.Models
 
         public void InitManager()
         {
+            if (Rules != null && Rules.Any())
+                return;
+
             Rules = new List<QueryBuilderRule>()
             {
                 new QueryBuilderRule
@@ -46,8 +53,23 @@ namespace vuequery.Models
                         new QueryBuilderChoice{Label = "Water", Value = "water"},
                         new QueryBuilderChoice{Label = "Orange", Value = "orange"}
                     }
+                },
+                new QueryBuilderRule
+                {
+                    Type = "select",
+                    Id = "transport",
+                    Label = "Transport",
+                    Choices = new List<QueryBuilderChoice>()
+                    {
+                        new QueryBuilderChoice{Label = "Bus", Value = "bus"},
+                        new QueryBuilderChoice{Label = "Train", Value = "train"},
+                        new QueryBuilderChoice{Label = "Car", Value = "car"},
+                        new QueryBuilderChoice{Label = "Walk", Value = "walk"}
+                    }
                 }
             };
+
+            
         }
     }
 }
